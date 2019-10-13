@@ -1,7 +1,10 @@
-# import flask
-KEY = X5szT5DjaoXhkuVmGVnMrBU
-URL = https://api.comining.io/?key= + KEY
+HTML_SAVE_PATH = "/var/www/html/comining.html"
 
+COMINING_URL = "https://api.comining.io/?key="
+COMINING_KEY = "X5szT5DjaoXhkuVmGVnMrBU"
+
+# import flask
+import hashlib
 import datetime
 import urllib.request
 from urllib.parse import urljoin 
@@ -13,25 +16,25 @@ import re
 import operator
 import os
 import binascii
+import requests
 
-# https://api.comining.io/?key=[YOUR_API_KEY]
-# {"method":"[METHOD_NAME]"}
+coinslist = {"method":"coins_list"}
+coinsreward = {"method":"coins_reward"}
+blocklist = {"method":"blocks_list"}
+mininglist = {"method":"mining_list"}
+workershash = {"method":"workers_hashrate"}
+workerslist = {"method":"workers_list"}
+workers = {"method":"workers_summary"}
+headers = {'charset': 'utf-8'}
 
-def worker(filmID):
-    {"method":"workers_summary"}
-    return result
-  
-{"method":"coins_list"}
+def RESP(opt):  #Post запрос к серверу
+	response = requests.post(COMINING_URL + COMINING_KEY, json=opt, headers=headers)
+	print(response.status_code)
+	return response.json()
 
+wrkrs = RESP(workers)
+x = list(wrkrs.get('data'))
+y = x[0]
 
-r = requests.get('https://api.github.com/user', auth=('user', 'pass'))
->>> r.status_code
-200
->>> r.headers['content-type']
-'application/json; charset=utf8'
->>> r.encoding
-'utf-8'
->>> r.text
-u'{"type":"User"...'
->>> r.json()
-{u'private_gists': 419, u'total_private_repos': 77, ...}
+workersHashrate = y['workersHashrate']
+coinName = y['coinName']
