@@ -1,4 +1,4 @@
-HTML_SAVE_PATH = "/var/www/html/comining.html"
+HTML_SAVE_PATH = "/var/www/html/comining_"
 
 COMINING_URL = "https://api.comining.io/?key="
 COMINING_KEY = "X5szT5DjaoXhkuVmGVnMrBU"
@@ -27,15 +27,13 @@ workerslist = {"method":"workers_list"}
 workers = {"method":"workers_summary"}
 headers = {'charset': 'utf-8'}
 
-wrkrs = []
-wrkrslst = []
 
 def RESP(opt):  #Post запрос к серверу
 	response = requests.post(COMINING_URL + COMINING_KEY, json=opt, headers=headers)
 	return response.json()
 
-def saveHTML(wrkrs, filePath):
-	f = open(filePath,'w', encoding='utf-8')
+def saveHTML(list, filePath):
+	f = open(filePath+list=".html",'w', encoding='utf-8')
 	html =  """<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ru-RU">
 <head>
@@ -115,10 +113,9 @@ def saveHTML(wrkrs, filePath):
 	f.close()
 	return 
 
+
 def main():
 	
-#	wrkrs = []
-
 	wrkrs = RESP(workers)
 	wrkrs = list(wrkrs.get('data'))
 	wrkrs = wrkrs[0]
@@ -158,5 +155,9 @@ def main():
 	"""
 	
 	saveHTML(wrkrs, HTML_SAVE_PATH)
+	saveHTML(wrkrslst, HTML_SAVE_PATH)
+	saveHTML(blcklst, HTML_SAVE_PATH)
 	
 main()
+
+
