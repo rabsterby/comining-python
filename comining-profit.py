@@ -62,17 +62,24 @@ def blckslist(): # делаем словарь добытых блоков	Coin 
 	blks = {}
 	blcklst = RESP(blocklist)
 	blcklst = list(blcklst.get('data'))
+	wrkrlst = wrkrslist()
+	crntmnng = wrkrlst.get('coin')
 	#print(blcklst)
 	for l in range(len(blcklst)):
 		blk = blcklst[l]
 		dt = str(blk.get('created')) 
 		dtm = str(datetime.strptime(dt, "%Y-%m-%dT%H:%M:%S"))
-		dtm = dtm[5:17]
+		dtm = ' ' + dtm[5:10]
 		#rwrd = int(blk.get('reward')) / 100000000
 		# = int(cnslst[l].get('id')), rv, float(pr.get('revenue_usd') / 10)
-		blks[dtm] = blk.get('miningUniq'), blk.get('coin')
+		#if blks.get
+		blks[blk.get('coin') + dtm] = blk.get('miningUniq'), 
 		#print(blk.get('coin')+str(blk.get('created')), dtm, blk.get('reward'), blk.get('miningUniq'))
-	#print(blks)
+	blky = list(blks.keys())
+	print(crntmnng + ' ' + crntDt[:5])
+	for g in range(len(blky)):
+		if blky[g] == crntmnng + ' ' + crntDt[:5]:
+			
 	return blks
 	
 def chngmining(WORKER_UNIQ, MINING_UNIQ): 
@@ -111,42 +118,48 @@ def wrkrslist():
 		wrckrlst['mnnguniq'] = wrkrslst.get('miningUniq')
 	return wrckrlst
 
-def main():
-	WORKER_UNIQ = ""
-	MINING_UNIQ = ""
-	crntDt = str(datetime.today().strftime("%m-%d %H:%M"))
-	#wrkrs = RESP(workers)
-	#wrkrs = list(wrkrs.get('data'))
-	#wrkrs = wrkrs[0]
-	
-	blks = blckslist()
-	wrkrlst = wrkrslist()
-	mnnglst = mnnglist()
+WORKER_UNIQ = ""
+MINING_UNIQ = ""
+crntDt = str(datetime.today().strftime("%m-%d %H:%M"))
+#wrkrs = RESP(workers)
+#wrkrs = list(wrkrs.get('data'))
+#wrkrs = wrkrs[0]
+
+blks = blckslist()
+wrkrlst = wrkrslist()
+crntmnng = wrkrlst.get('coin')
+mnnglst = mnnglist()
+rvn = rvnd()
+mn = crntmnng + ' ' + crntDt
+mn = mn[0:-6]
+#for t in range(blks):
+bl = blks.get(mn)	
+if crntmnng == 0:
 	rvn = rvnd()
-	mnncoin = mnnlst.get('ETP')
-	WORKER_UNIQ = wrkrlst.get('wrkruniq')
-	MINING_UNIQ = mnncoin
-	print(crntDt)
-	dt = crntDt[:4]
-	if dt == 
-	print(blks.value(dt))
-	#chngmining(WORKER_UNIQ, MINING_UNIQ)
-	#print(wrkrlst)
-	#print(rvn)
-	
+mnncoin = mnnlst.get('ETP')
+WORKER_UNIQ = wrkrlst.get('wrkruniq')
+MINING_UNIQ = mnncoin
+print(crntDt)
+#print(blks)
+dt = crntDt[:4]
+#if dt == 
+#print(blks)
+#chngmining(WORKER_UNIQ, MINING_UNIQ)
+#print(wrkrlst)
+#print(rvn)
 
 
-	
-	"""
-	N = (t*R*H)/(D*2^32)
+
+"""
+N = (t*R*H)/(D*2^32)
 где:
 N - доход в монетах
 t - период майнинга в секундах (например, сутки = 86400)
 R - награда за блок в монетах
 H - хэшрейт в секунду (например, 1ГХш = 1000000000)
 D - сложность
-	"""
+"""
 	
-main()
+
 
 
