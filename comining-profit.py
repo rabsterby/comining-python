@@ -60,6 +60,7 @@ def rvnd():
 
 def blckslist(): # делаем словарь добытых блоков	Coin (blk)
 	blks = {}
+	chngmnng = 0
 	blcklst = RESP(blocklist)
 	blcklst = list(blcklst.get('data'))
 	wrkrlst = wrkrslist()
@@ -79,8 +80,8 @@ def blckslist(): # делаем словарь добытых блоков	Coin 
 	print(crntmnng + ' ' + crntDt[:5])
 	for g in range(len(blky)):
 		if blky[g] == crntmnng + ' ' + crntDt[:5]:
-			
-	return blks
+			chngmnng = 1
+	return blks, chngmnng
 	
 def chngmining(WORKER_UNIQ, MINING_UNIQ): 
 	# изменяем майнинг на другую монету
@@ -126,6 +127,8 @@ crntDt = str(datetime.today().strftime("%m-%d %H:%M"))
 #wrkrs = wrkrs[0]
 
 blks = blckslist()
+chngmnng = blks[1]
+blks = blks[0]
 wrkrlst = wrkrslist()
 crntmnng = wrkrlst.get('coin')
 mnnglst = mnnglist()
