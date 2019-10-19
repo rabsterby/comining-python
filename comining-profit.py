@@ -143,10 +143,7 @@ mnncoin = mnnlst.get('ETP')
 WORKER_UNIQ = wrkrlst.get('wrkruniq')
 MINING_UNIQ = mnncoin
 print(crntDt)
-#print(blks)
-dt = crntDt[:4]
 #if dt == 
-#print(blks)
 #chngmining(WORKER_UNIQ, MINING_UNIQ)
 #print(wrkrlst)
 #print(rvn)
