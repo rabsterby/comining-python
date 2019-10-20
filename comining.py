@@ -4,7 +4,6 @@ COMINING_URL = "https://api.comining.io/?key="
 COMINING_KEY = "X5szT5DjaoXhkuVmGVnMrBU"
 
 # import flask
-import hashlib
 import datetime
 import urllib.request
 from urllib.parse import urljoin 
@@ -26,7 +25,6 @@ workershash = {"method":"workers_hashrate"}
 workerslist = {"method":"workers_list"}
 workers = {"method":"workers_summary"}
 headers = {'charset': 'utf-8'}
-
 
 def RESP(opt):  #Post запрос к серверу
 	response = requests.post(COMINING_URL + COMINING_KEY, json=opt, headers=headers)
@@ -128,7 +126,7 @@ def main():
 	blcklst = RESP(blocklist)
 	blcklst = list(blcklst.get('data'))
 	print(blcklst[0])
-	
+
 	"""
 	wrkrshsh = RESP(workershash)
 	wrkrshsh = list(wrkrshsh.get('data'))
@@ -153,11 +151,8 @@ def main():
 	cnsrwrd = list(cnsrwrd.get('data'))
 	#print(cnsrwrd)
 	"""
-	
 	saveHTML(wrkrs, HTML_SAVE_PATH)
 	saveHTML(wrkrslst, HTML_SAVE_PATH)
 	saveHTML(blcklst, HTML_SAVE_PATH)
 	
 main()
-
-
