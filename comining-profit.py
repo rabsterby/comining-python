@@ -6,7 +6,6 @@ WORKER_UNIQ = ""
 MINING_UNIQ = ""
 
 # import flask
-#import hashlib
 from datetime import datetime
 import time
 import urllib.request
@@ -19,7 +18,6 @@ import operator
 import os
 import binascii
 import requests
-from operator import itemgetter
 
 coinsreward = {"method":"coins_reward"}
 mininglist = {"method":"mining_list"}
@@ -32,7 +30,6 @@ headers = {'charset': 'utf-8'}
 
 mnnlst = {}
 mnnglst = {}
-
 
 def RESP(opt):  #Post запрос к серверу
 	response = requests.post(COMINING_URL + COMINING_KEY, json=opt, headers=headers)
