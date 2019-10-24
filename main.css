@@ -110,7 +110,7 @@
       font-size: 13px;
   }
 
-  .film-img-box {
+  .img-box {
       margin-left: 0;
       position: relative;
       left: -12px;
@@ -118,7 +118,7 @@
       margin-bottom: 15px;
   }
 
-  .film-img-box img {
+  .img-box img {
       border: 0;
   }
 
@@ -198,7 +198,7 @@
       color: #000;
   }
 
-  .film-rating {
+  .rating {
       border-radius: 1px;
       position: absolute;
       left: 5px;
