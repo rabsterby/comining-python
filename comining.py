@@ -111,7 +111,6 @@ def saveHTML(list, filePath):
 	f.close()
 	return 
 
-
 def main():
 	
 	wrkrs = RESP(workers)
