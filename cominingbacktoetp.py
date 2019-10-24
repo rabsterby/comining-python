@@ -132,8 +132,9 @@ mn = crntmnng + ' ' + crntDt
 mn = mn[0:-6]
 
 bl = blks.get(mn)	
-mnncoin = mnnlst.get('ETP')
-WORKER_UNIQ = wrkrlst.get('wrkruniq')
-MINING_UNIQ = mnncoin
+if crntmnng != 'ETP':
+	mnncoin = mnnlst.get('ETP')
+	WORKER_UNIQ = wrkrlst.get('wrkruniq')
+	MINING_UNIQ = mnncoin
 
-chngmining(WORKER_UNIQ, MINING_UNIQ)
+	chngmining(WORKER_UNIQ, MINING_UNIQ)
