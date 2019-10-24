@@ -1,2 +1,2 @@
 # python
-Web python project
+Phyton scrits for monitoring and control mining on comining.io
