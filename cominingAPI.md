@@ -8,7 +8,7 @@ Request JSON message format:
 {"method":"[METHOD_NAME]"}
 All methods descriptions are below
 
-Response JSON format
+#Response JSON format
 
 {
   "result": true,
@@ -29,7 +29,7 @@ mining_list
 change_mining
 
 
-Coins List
+#Coins List
 
 Return all available coins on th pool
 
@@ -77,7 +77,7 @@ NOTE Fields workersCount and workersHashrate are deprecated and may be removed
 
 
 
-Coins Reward
+#Coins Reward
 
 
 Return your coins statistics
@@ -112,7 +112,7 @@ Response JSON message example:
 }
 
 
-Last Blocks
+#Last Blocks
 
 
 Disaplay last blocks, found on the pool
@@ -146,7 +146,7 @@ miningUniq- identificator of mining configuration (you can get it from mining_li
 
 
 
-Workers Summary
+#Workers Summary
 
 
 
@@ -172,7 +172,7 @@ Response JSON message example:
 
 
 
-Workers List
+#Workers List
 
 
 Disaplay all workers for your account, registered on the pool
@@ -228,7 +228,7 @@ curl -d '{"method":"workers_list"}' -H 'Content-Type: application/json' -X POST 
 
 
 
-Mining List
+#Mining List
 
 
 
@@ -259,7 +259,7 @@ uniq - identificator of mining configuration
 
 
 
-Change Mining
+#Change Mining
 
 
 You can use this method for change mining configurations for your workers on the pool
