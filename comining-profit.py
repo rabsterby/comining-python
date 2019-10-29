@@ -84,8 +84,8 @@ def chngmining(WORKER_UNIQ, MINING_UNIQ):
 	# изменяем майнинг на другую монету
 	chng = {"method": "change_mining", "workers": [ WORKER_UNIQ ], "mining": MINING_UNIQ}
 	chngmnng = requests.post(COMINING_URL + COMINING_KEY, json=chng, headers=headers)
-	print(chng)
-	print(chngmnng.json)
+	#print(chng)
+	#print(chngmnng.json)
 	return chngmnng.json
 
 def mnnglist(): 
