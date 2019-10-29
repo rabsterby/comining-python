@@ -197,20 +197,3 @@
       font-size: 11px;
       color: #000;
   }
-
-  .rating {
-      border-radius: 1px;
-      position: absolute;
-      left: 5px;
-      top: 5px;
-      z-index: 5;
-      box-shadow: none;
-      color: #fff;
-      width: 32px;
-      font-size: 11px;
-      font-weight: 600;
-      line-height: 13px;
-      padding: 3px 0 2px;
-      text-align: center;
-      font-family: Arial,Tahoma,Verdana,sans-serif;
-  }
