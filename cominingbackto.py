@@ -133,7 +133,7 @@ mn = mn[0:-6]
 
 bl = blks.get(mn)	
 if crntmnng != 'ETP':
-	mnncoin = mnnlst.get('ETP')
+	mnncoin = mnnlst.get('MOAC')
 	WORKER_UNIQ = wrkrlst.get('wrkruniq')
 	MINING_UNIQ = mnncoin
 
