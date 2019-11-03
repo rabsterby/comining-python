@@ -1,7 +1,5 @@
 COMINING_URL = "https://api.comining.io/?key="
 COMINING_KEY = "X5szT5DjaoXhkuVmGVnMrBU"
-WORKER_UNIQ = ""
-MINING_UNIQ = ""
 
 import pymongo
 import requests
@@ -18,22 +16,31 @@ def RESP(opt):  #Post запрос к серверу
 conn = pymongo.MongoClient("192.168.1.66", 27017)
  
 db = conn['comining']
-coll = db['mnblocks']
+mnblocks = db['mnblocks']
+pref = db['pref']
 
 blcklst = RESP(blocklist)
 blcklst = list(blcklst.get('data'))
 
 for i in range(len(blcklst)):
+	cn = 0
 	blkNmbr = blcklst[i].get('blockNumber')
 	ids = blcklst[i].get('id')
-	if  coll.find({"id": ids}).count() == 0:
-		#print(blcklst[i].get('coin'), blkNmbr, 'new', blcklst[i].get('status'))
-				
+	cnn = blcklst[i].get('coin') + 'cn'
+	#print('Need_add', cnn)
+	
+	#pref.update({'lastblock': 'XERO'},{'lastblock': blcklst[i].get('coin')})
+	#pref.update({cnn : cn})
+	#pref.update({cnn : 0})
+	#cn = pref.find({cnn :})
+	if  mnblocks.find({"id": ids}).count() == 0:
+		print(blcklst[i].get('coin'), blkNmbr, 'new', blcklst[i].get('status'))
 		if blcklst[i].get('reward') != None:
-			
 			blk = {'id': blcklst[i].get('id'), 'coin': blcklst[i].get('coin'), 'blockNumber': blcklst[i].get('blockNumber'), 'reward': (int(int(blcklst[i].get('reward')) * 0.99)),'created': blcklst[i].get('created')}
-			#print(blk)
-			coll.insert(blk)
-			#print(blcklst[i].get('coin'), blkNmbr, 'inserted')
+			mnblocks.insert(blk)
+			
+			print(blcklst[i].get('coin'), blkNmbr, 'inserted')
+			
+			
 
 			
