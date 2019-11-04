@@ -29,7 +29,6 @@ for i in range(len(blcklst)):
 	cnn = blcklst[i].get('coin') + 'cn'
 	#print('Need_add', cnn)
 	
-	#pref.update({'lastblock': 'XERO'},{'lastblock': blcklst[i].get('coin')})
 	#pref.update({cnn : cn})
 	#pref.update({cnn : 0})
 	#cn = pref.find({cnn :})
@@ -38,7 +37,7 @@ for i in range(len(blcklst)):
 		if blcklst[i].get('reward') != None:
 			blk = {'id': blcklst[i].get('id'), 'coin': blcklst[i].get('coin'), 'blockNumber': blcklst[i].get('blockNumber'), 'reward': (int(int(blcklst[i].get('reward')) * 0.99)),'created': blcklst[i].get('created')}
 			mnblocks.insert(blk)
-			
+			pref.update({'last': 'block'},{'lastbl': blcklst[i].get('coin')})
 			print(blcklst[i].get('coin'), blkNmbr, 'inserted')
 			
 			
