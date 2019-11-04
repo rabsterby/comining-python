@@ -27,17 +27,18 @@ for i in range(len(blcklst)):
 	blkNmbr = blcklst[i].get('blockNumber')
 	ids = blcklst[i].get('id')
 	cnn = blcklst[i].get('coin') + 'cn'
-	#print('Need_add', cnn)
 	
+	#print('Need_add', cnn)	
 	#pref.update({cnn : cn})
 	#pref.update({cnn : 0})
 	#cn = pref.find({cnn :})
+	
 	if  mnblocks.find({"id": ids}).count() == 0:
 		print(blcklst[i].get('coin'), blkNmbr, 'new', blcklst[i].get('status'))
 		if blcklst[i].get('reward') != None:
 			blk = {'id': blcklst[i].get('id'), 'coin': blcklst[i].get('coin'), 'blockNumber': blcklst[i].get('blockNumber'), 'reward': (int(int(blcklst[i].get('reward')) * 0.99)),'created': blcklst[i].get('created')}
 			mnblocks.insert(blk)
-			pref.update({'last': 'block'},{'lastbl': blcklst[i].get('coin')})
+			pref.update({'last': 'block'},{'last': 'block', 'lastbl': blcklst[i].get('coin'), 'count': 1, 'date': blcklst[i].get('created')})
 			print(blcklst[i].get('coin'), blkNmbr, 'inserted')
 			
 			
