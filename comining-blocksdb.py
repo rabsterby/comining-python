@@ -1,5 +1,5 @@
 COMINING_URL = "https://api.comining.io/?key="
-COMINING_KEY = "YOUR-COMINING-KEY"
+COMINING_KEY = "X5szT5DjaoXhkuVmGVnMrBU"
 
 import pymongo
 import requests
@@ -28,7 +28,7 @@ for i in range(len(blcklst)):
 	ids = blcklst[i].get('id')
 	cnn = blcklst[i].get('coin') + 'cn'
 	
-	#print('Need_add', cnn)	
+	#print('Need_add', cnn)
 	#pref.update({cnn : cn})
 	#pref.update({cnn : 0})
 	#cn = pref.find({cnn :})
@@ -47,3 +47,4 @@ for i in range(len(blcklst)):
 				ccn = 1
 			pref.update({'last': 'block'},{'last': 'block', 'lastbl': blcklst[i].get('coin'), 'count': ccn, 'date': blcklst[i].get('created')})
 			print(blcklst[i].get('coin'), blkNmbr, 'inserted')
+	
