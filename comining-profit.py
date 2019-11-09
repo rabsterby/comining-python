@@ -102,7 +102,6 @@ def mnnglist():
 		#print(r)
 		if r == '10G / SOLO':
 			mnnlst[mnglst.get('coin')] = mnglst.get('uniq')
-
 	return mnnlst
 
 def wrkrslist(): 
