@@ -12,6 +12,7 @@ mininglist = {"method":"mining_list"}
 headers = {'charset': 'utf-8'}
 
 mnnglst, mnglst, mnnlst, mininground = {}, {}, {}, {}
+mnnc = ('CLO', 'ELLA', 'ETP', 'MUSIC', 'DBIX', 'PIRL', 'CLO', 'NUKO', 'CLO', 'VIC', 'EXP', 'PGC', 'MOAC', 'AURA', 'MOAC', 'AKA', 'ETP', 'ESN', 'EXP', 'EGEM', 'CLO', 'DOGX', 'EXP', 'ATH', 'CLO', 'NILU', 'MOAC', 'PRKL', 'EXP',  'REOSC', 'TSF', 'ETP',  'SAGE', 'MOAC', 'XERO', 'CLO', 'FUNC')
 
 def RESP(opt):  #Post запрос к серверу
 	response = requests.post(COMINING_URL + COMINING_KEY, json=opt, headers=headers)
@@ -48,8 +49,6 @@ def CHNGMINING(WORKER_UNIQ, MINING_UNIQ):
 	# изменяем майнинг на другую монету
 	chng = {"method": "change_mining", "workers": [ WORKER_UNIQ ], "mining": MINING_UNIQ}
 	chngmnng = requests.post(COMINING_URL + COMINING_KEY, json=chng, headers=headers)
-	print(chng)
-	print(chngmnng.json)
 	return chngmnng.json	
 
 conn = pymongo.MongoClient("192.168.1.66", 27017)
@@ -85,21 +84,23 @@ for i in range(len(blcklst)):
 
 mnnlst = MNNGLIST()		#словарь: 10G Solo
 wrckrlst = WRKRSLIST() #словарь: майнеры
-
-mininground = pref.find_one({'mininground': 'mininground'}) #словарь: очередь добычи
-round1 = mininground.get('round1')
-round2 = mininground.get('round2')
-
-wrckrlst['coin']
-
-mnncoin = mnnlst.get('ETP')
-WORKER_UNIQ = wrckrlst.get('wrkruniq')
-MINING_UNIQ = mnncoin
+cmnc = wrckrlst['coin']
+round1 = pref.find_one({'miningcoin': 'miningcoin'})
+rc = round1.get('round1')
+cmnnc =  mnnc[rc]
 
 countercoin = pref.find_one({'coin': cn}) #словарь: монета, количество блоков для добычи
 
 if wrckrlst['coin'] == cn and countercoin.get('count') <= ccn:
-	
+	round1 = pref.find_one({'miningcoin': 'miningcoin'})
+	rc = round1.get('round1')
+	mnncoin = mnnlst.get(cmnnc)
+	WORKER_UNIQ = wrckrlst.get('wrkruniq')
+	MINING_UNIQ = mnncoin
 	CHNGMINING(WORKER_UNIQ, MINING_UNIQ)
+	rc = rc + 1
+	if rc >= (len(mnnc)):
+		rc =0
+	pref.update({'miningcoin': 'miningcoin'},{'miningcoin': 'miningcoin', 'round1': rc})
 else:
 	print('Nochange',cn, ccn)
