@@ -1,5 +1,5 @@
 COMINING_URL = "https://api.comining.io/?key="
-COMINING_KEY = "X5szT5DjaoXhkuVmGVnMrBU"
+COMINING_KEY = "You-Key-Here"
 
 import pymongo
 import requests
