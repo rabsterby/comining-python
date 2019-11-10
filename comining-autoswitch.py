@@ -1,7 +1,7 @@
 HTML_SAVE_PATH = "/var/www/html/comining_"
 
 COMINING_URL = "https://api.comining.io/?key="
-COMINING_KEY = "X5szT5DjaoXhkuVmGVnMrBU"
+COMINING_KEY = "Your-Comining-Key"
 WORKER_UNIQ = ""
 MINING_UNIQ = ""
 
