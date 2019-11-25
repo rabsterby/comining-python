@@ -1,4 +1,4 @@
-# python
+## Automated mining on comining.io pool
 Phyton scrits for monitoring and control mining on comining.io
 Monitoring and control miners
 
@@ -6,5 +6,8 @@ Monitoring and control miners
 shedule switching
 smart switching
 
-# Info
+# comining-blocksdb
+add mined blocks to MongoDB database, control and switch to anothore coin
 
+# comining-profit
+calculate profit and counfed coins for mined
