@@ -12,7 +12,10 @@ mininglist = {"method":"mining_list"}
 headers = {'charset': 'utf-8'}
 
 mnnglst, mnglst, mnnlst, mininground = {}, {}, {}, {}
-mnnc = ('CLO', 'ELLA', 'ETP', 'MUSIC', 'DBIX', 'PIRL', 'CLO', 'NUKO', 'CLO', 'VIC', 'EXP', 'PGC', 'MOAC', 'AURA', 'MOAC', 'AKA', 'ETP', 'ESN', 'EXP', 'EGEM', 'CLO', 'DOGX', 'EXP', 'ATH', 'CLO', 'NILU', 'MOAC', 'PRKL', 'EXP',  'REOSC', 'TSF', 'ETP',  'SAGE', 'MOAC', 'XERO', 'CLO', 'FUNC')
+#mnnc = ('CLO', 'ELLA', 'ETP', 'MUSIC', 'DBIX', 'PIRL', 'MOAC', 'NUKO', 'EXP', 'PGC', 'MOAC', 'AURA', 'CLO', 'AKA', 'ETP', 'ESN', 'EXP', 'EGEM', 'CLO', 'DOGX', 'EXP', 'ATH', 'ETP', 'NILU', 'MOAC', 'PRKL', 'EXP',  'REOSC', 'TSF', 'ETP',  'SAGE', 'MOAC', 'XERO', 'CLO', 'FUNC')
+mnnc = ( 'FUNC', 'ELLA', 'PIRL', 'MOAC', 'NUKO', 'EXP', 'PGC', 'MOAC', 'AURA', 'CLO', 'AKA', 'EXP', 'EGEM', 'PIRL', 'CLO', 'ATH', 'EXP', 'NILU', 'MOAC', 'PRKL', 'CLO', 'REOSC', 'EXP', 'TSF', 'PIRL', 'SAGE', 'MOAC', 'XERO', 'CLO')
+
+nomn = ('VIC', 'ETP', )
 
 def RESP(opt):  #Post запрос к серверу
 	response = requests.post(COMINING_URL + COMINING_KEY, json=opt, headers=headers)
@@ -84,10 +87,10 @@ for i in range(len(blcklst)):
 
 mnnlst = MNNGLIST()		#словарь: 10G Solo
 wrckrlst = WRKRSLIST() #словарь: майнеры
-cmnc = wrckrlst['coin']
+cmnc = wrckrlst['coin'] #current mining coin
 round1 = pref.find_one({'miningcoin': 'miningcoin'})
-rc = round1.get('round1')
-cmnnc =  mnnc[rc]
+rc = round1.get('round1') #number of coin in mineble list
+cmnnc =  mnnc[rc] #next mining coin
 
 countercoin = pref.find_one({'coin': cn}) #словарь: монета, количество блоков для добычи
 
@@ -100,7 +103,7 @@ if wrckrlst['coin'] == cn and countercoin.get('count') <= ccn:
 	CHNGMINING(WORKER_UNIQ, MINING_UNIQ)
 	rc = rc + 1
 	if rc >= (len(mnnc)):
-		rc =0
+		rc = 0
 	pref.update({'miningcoin': 'miningcoin'},{'miningcoin': 'miningcoin', 'round1': rc})
 else:
 	print('Nochange',cn, ccn)
