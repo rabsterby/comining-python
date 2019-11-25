@@ -46,13 +46,13 @@ for i in range(len(cnslst)):
 		if cnt >= 100:
 			cnt = 10
 		elif cnt >= 50:
-			cnt = 5
+			cnt = 6
 		elif cnt >= 40:
-			cnt = 4	
+			cnt = 5	
 		elif cnt >= 30:
-			cnt = 3	
+			cnt = 4	
 		elif cnt >= 20:
-			cnt = 2	
+			cnt = 3	
 		elif cnt >= 10:
 			cnt = 2	
 		elif cnt >= 1:
